@@ -1,0 +1,5 @@
+crewai
+crewai_tools
+pandas
+python-dotenv
+loguru

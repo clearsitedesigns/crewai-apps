@@ -1,0 +1,88 @@
+# CrewAI Product Review Analysis
+
+This repository contains a script to set up and execute a CrewAI framework for collecting and analyzing product reviews for a specified product type. The script uses various tools and agents to gather, process, and output the review data in both markdown and CSV formats.
+
+## Features
+
+- **Environment Setup**: Loads environment variables from a `.env` file.
+- **Custom Tools**:
+  - `MarkdownTableTool`: Generates a markdown table from structured data.
+  - `CSVWriterTool`: Generates a CSV file from structured data.
+  - `CustomScrapeWebsiteTool`: Extends `ScrapeWebsiteTool` to count the total number of sources used.
+- **Agents**:
+  - `data_collector`: Gathers relevant data from various sources.
+  - `data_analyzer`: Analyzes data and creates structured outputs.
+- **Tasks**:
+  - `collect_reviews_task`: Collects product reviews based on specified attributes.
+  - `analyze_reviews_markdown_task`: Analyzes collected reviews and generates a markdown table.
+  - `analyze_reviews_csv_task`: Analyzes collected reviews and generates a CSV file.
+- **Crew Execution**: Executes the tasks sequentially and logs the total number of sources used and the time taken.
+
+## Setup
+
+1. **Clone the repository**:
+    ```sh
+    git clone <repository_url>
+    cd <repository_directory>
+    ```
+
+2. **Create a virtual environment** (optional but recommended):
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+3. **Install the required packages**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4. **Create a `.env` file** in the root directory and add the necessary environment variables:
+    ```env
+    EXA_API_KEY=your_exa_api_key
+    OPENAI_API_BASE=http://localhost:11434/v1
+    OPENAI_API_KEY=your_openai_api_key
+    OPENAI_MODEL_NAME=mixtral:8x7b
+    SERPER_API_KEY=your_serper_api_key
+    ```
+
+## Usage
+
+1. **Customize the script**:
+   - Modify the `product_type`, `review_attributes`, `source_hints`, and `avoid_types` as needed.
+
+2. **Run the script**:
+    ```sh
+    python crew_review.py
+    ```
+
+3. **Output**:
+   - Check the generated markdown and CSV files for the analysis results.
+
+## Example Usage
+
+The script includes commented-out examples for various product types such as hosting providers, t-shirt companies, LLM hosting providers, smartphones, laptops, and more. These examples show how to set up and execute the crew for different review scenarios.
+
+## Code Explanation
+
+The script sets up and executes a CrewAI framework to collect and analyze product reviews for a specific product type. Here are the main functionalities:
+
+1. **Environment Setup**: Loads environment variables from a `.env` file.
+2. **Custom Tools Implementation**:
+   - `MarkdownTableTool`: Generates a markdown table from structured data.
+   - `CSVWriterTool`: Generates a CSV file from structured data.
+   - `CustomScrapeWebsiteTool`: Extends `ScrapeWebsiteTool` to count the total number of sources.
+3. **Agent Creation**:
+   - Defines agents for data collection and data analysis with specific goals and tools.
+4. **Task Creation**:
+   - Tasks for collecting reviews and generating markdown and CSV outputs.
+5. **Crew Execution**:
+   - Configures and executes the crew, logging the total number of sources and time taken.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or issues, please contact [Your Name] at [your.email@example.com].
